@@ -1,0 +1,65 @@
+name: Build & deploy manual (GitHub Pages)
+
+# Phase 1 proof-of-concept: French only (see mkdocs.yml / MODERNIZATION.md).
+# Triggers on changes to the French content, the nav config, or this
+# workflow itself; can also be run manually.
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - manual-online
+    paths:
+      - french/**
+      - mkdocs.yml
+      - requirements-docs.txt
+      - .github/workflows/pages.yml
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+          cache: pip
+
+      - name: Install docs tooling
+        run: pip install -r requirements-docs.txt
+
+      # Not --strict yet: the existing French content has a handful of
+      # pre-existing broken image links / pages missing from SUMMARY.md
+      # (see MODERNIZATION.md, "known content gaps"). Once those are
+      # cleaned up, switch this to `mkdocs build --strict` so future
+      # breakages fail the build instead of just logging a warning.
+      - name: Build site
+        run: mkdocs build --site-dir _site
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

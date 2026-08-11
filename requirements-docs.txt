@@ -1,0 +1,4 @@
+# Tooling for building the static web manual (mkdocs.yml at repo root).
+# Pinned loosely; bump deliberately and re-test the build.
+mkdocs>=1.6
+mkdocs-material>=9.5

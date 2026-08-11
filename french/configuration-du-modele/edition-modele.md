@@ -20,12 +20,12 @@ La modification du type d'empennage ou du plateau oscillant de l'hélicoptère e
 
 **Inters de fonction**
 
-![](<../.gitbook/assets/2 (4).jpeg>)
+![](<../gitbook-legacy-assets/assets/2 (4).jpeg>)
 
 Les six inters de fonction sont disponibles partout où se trouvent les paramètres de « condition active ». 
 NB : Ils ne peuvent pas être utilisés comme source comme les inters standards.
 
-![](<../.gitbook/assets/3 (4).jpeg>)
+![](<../gitbook-legacy-assets/assets/3 (4).jpeg>)
 
 **Configuration**
 
@@ -57,18 +57,18 @@ Si cette option est activée, l’inter de fonction sera dans le même état lor
 
 **Connecteur SPort**
 
-![](<../.gitbook/assets/4 (3).jpeg>)
+![](<../gitbook-legacy-assets/assets/4 (3).jpeg>)
 
 La broche 5V sur le connecteur SPort peut être contrôlée modèle par modèle, pour alimenter par exemple un récepteur externe pour une fonction d'écolage par exemple.
 
 **Filtre analogique**
 
-![](<../.gitbook/assets/5 (3).jpeg>)![](<../.gitbook/assets/6 (3).jpeg>)
+![](<../gitbook-legacy-assets/assets/5 (3).jpeg>)![](<../gitbook-legacy-assets/assets/6 (3).jpeg>)
 
 Il existe un paramètre global de filtre de convertisseur analogique-numérique sur la page Matériel sous Filtre analogique, ce qui peut améliorer la détection autour du centre du manche. Ce paramètre spécifique au modèle peut être utilisé pour remplacer le paramètre global.
 
 **Supprimer tous les mixages**
 
-![](<../.gitbook/assets/7 (3).png>)
+![](<../gitbook-legacy-assets/assets/7 (3).png>)
 
 L'exécution de l'option « Suppression mixages » réinitialisera tous les mixages.

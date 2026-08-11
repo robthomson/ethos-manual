@@ -1,18 +1,18 @@
 # Chronos
 
-![](../.gitbook/assets/0.png)
+![](../gitbook-legacy-assets/assets/0.png)
 
-![](../.gitbook/assets/1.png)
+![](../gitbook-legacy-assets/assets/1.png)
 
 Il y a 8 chronos entièrement programmables qui peuvent compter (haut) ou décompter (bas).
 
-![](../.gitbook/assets/2.jpeg)
+![](../gitbook-legacy-assets/assets/2.jpeg)
 
 Appuyer sur une ligne de chrono fait apparaître une fenêtre contextuelle avec des options permettant de réinitialiser ou de modifier ce chrono, d'ajouter un nouveau chrono ou de déplacer, de copier/coller le chrono, de le dupliquer ou de le supprimer.
 
 **mode (vers le bas, décompte)**
 
-![](../.gitbook/assets/3.png)
+![](../gitbook-legacy-assets/assets/3.png)
 
 _**Valeur**_
 
@@ -38,7 +38,7 @@ La condition de départ lance le chrono. Si la condition d'arrêt ci-dessous est
 
 Si la condition d'arrêt est 'par défaut', le chrono est contrôlé que par la condition de départ.
 
-![](../.gitbook/assets/4.jpeg)
+![](../gitbook-legacy-assets/assets/4.jpeg)
 
 S'il ne s'agit pas de la valeur par défaut, une fois que le chrono est en cours d'exécution, la condition d'arrêt contrôle le chrono. Le chrono s'arrête lorsque la condition d'arrêt est 'vraie", mais continue tant que la condition d'arrêt est 'fausse'.
 
@@ -48,7 +48,7 @@ Dans l'exemple ci-dessus, le minuteur est démarré lorsque Gaz actif devient 'v
 
 S'il est réglé sur '---, le chronomètre compte en temps réel. Si une source proportionnelle est sélectionnée, la vitesse du chrono est contrôlée par cette source, par exemple le manche des gaz ou même la voie des gaz. Lorsque la valeur de l'accélérateur est de -100 %, le chrono est arrêté. Lorsque la valeur des gaz est de +100%, le chrono compte en temps réel. Avec des valeurs de gaz intermédiaires, le chrono compte proportionnellement.
 
-![](../.gitbook/assets/5.png)
+![](../gitbook-legacy-assets/assets/5.png)
 
 **Réinitialisation**
 
@@ -69,7 +69,7 @@ Les actions audios sont très puissantes et flexibles, ce qui permet de configur
 
 Cliquez sur « Ajout action audio ».
 
-![](../.gitbook/assets/6.png)
+![](../gitbook-legacy-assets/assets/6.png)
 
 Sélectionnez le type d'action audio requis, c'est-à-dire « Compte à rebours » dans l'exemple ci-dessus.\
 
@@ -85,10 +85,10 @@ _**Vibreur**_
 
 **Si cette option est activée, une vibration accompagnera les annonces.**
 
-![](../.gitbook/assets/7.png)\
+![](../gitbook-legacy-assets/assets/7.png)\
 Les types d'action audio incluent « Décompte (par voix), « bip décompte» (avec des bips au lieu de la voix), « Lire fichier » et « Lire valeur »
 
-![](../.gitbook/assets/8.png)
+![](../gitbook-legacy-assets/assets/8.png)
 
 Dans cet exemple, ci-dessus trois actions audios ont été configurées :
 
@@ -100,7 +100,7 @@ D'autres actions audios peuvent être ajoutées en appuyant sur le bouton « Ajo
 
 **Chronomètre (vers le haut, augmente)**
 
-![](../.gitbook/assets/9.jpeg)
+![](../gitbook-legacy-assets/assets/9.jpeg)
 
 _**Valeur**_
 
@@ -116,7 +116,7 @@ Le chrono peut compter **vers le haut** ou vers le bas.
 
 **Valeur de l'alarme**
 
-![](../.gitbook/assets/10.jpeg)
+![](../gitbook-legacy-assets/assets/10.jpeg)
 
 Si le chrono a été réglée sur le compte à rebours, le paramètre de valeur de l'alarme définit la valeur à laquelle le chrono s'écoule. Le chrono continue de fonctionner , mais la valeur devient rouge dans les widgets du chrono.
 
@@ -150,7 +150,7 @@ Sélectionnez la voix à utiliser pour les annonces vocales. Reportez-vous à la
 
 Les actions audios sont très puissantes et flexibles, ce qui permet de configurer les alertes de le chrono selon les besoins de l'utilisateur.
 
-![](../.gitbook/assets/11.jpeg)
+![](../gitbook-legacy-assets/assets/11.jpeg)
 
 Dans cet exemple, trois actions audio ont été configurées :
 

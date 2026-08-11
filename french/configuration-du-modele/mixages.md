@@ -2,7 +2,7 @@
 
 #### Mixages <a href="#toc170159560" id="toc170159560"></a>
 
-![](<../.gitbook/assets/0 (3).jpeg>)\
+![](<../gitbook-legacy-assets/assets/0 (3).jpeg>)\
 
 La fonction Mixages constitue le cœur de la radio. C'est là que les fonctions de contrôle du modèle sont configurées. La section Mixages permet de mixer ou de combiner n'importe laquelle des nombreuses sources d'entrée à volonté et de les diriger sur l'un des voies de sortie. Ethos dispose de 100 possibilités de mixage pour la programmation de votre modèle. Normalement, les voies numérotées les plus bas seront attribués aux servos, car les numéros correspondent géneralement aux voies du récepteur. Le module RF (radiofréquence) interne permet jusqu'à 24 voies physiques.
 
@@ -14,12 +14,12 @@ Cette section permet également de conditionner la source en définissant des co
 L'éditeur de mixage inclut des informations d'aide contextuelle qui changent dynamiquement lorsque les options de mixage sont modifiées. La première ligne indique le type de mixage utilisé, tel que 'Ailerons', 'Profondeur' ou 'Mixage libre', etc. 
 Jusqu'à 120 mixages peuvent être définis. Un nouveau mixage peut également être ajouté en appuyant sur le symbole '+'..
 
-![](<../.gitbook/assets/1 (3).png>)
+![](<../gitbook-legacy-assets/assets/1 (3).png>)
 
 Si votre modèle a été créé à l'aide d'un assistant  « Choix modèle » du menu Système, les mixages de base apparaitront dans cette section. 
 De plus, les mixages prédéfinis les plus courants peuvent être ajoutés ainsi que des mixages libres configurables par l'utilisateur. 
 
-![](<../.gitbook/assets/2 (5).jpeg>)
+![](<../gitbook-legacy-assets/assets/2 (5).jpeg>)
 
 Pour modifier un mixage, une fois sélectionné, appuyez à nouveau afin d'accéder au menu contextuel, puis sélectionnez Modifier. D'autres options sont d'ajouter un nouveau mixage, de passer à la 'vue par sorties' (décrite dans une section plus bas), de déplacer le mixage vers le haut ou vers le bas, de dupliquer un mixage ou de le supprimer.
 
@@ -31,7 +31,7 @@ NB : Une confirmation sera demandée avant la suppression d'un mixage par mesure
 Le mixage 'ailerons' est proposé en exemple mais la programmation reste identique pour la profondeur et dérive.
 
 \
-![](<../.gitbook/assets/3 (1).png>)
+![](<../gitbook-legacy-assets/assets/3 (1).png>)
 
 _**Nom**_
 
@@ -47,7 +47,7 @@ Si des phases de vol ont été définies, le mixage peut être conditionné à u
 
 **Courbe**
 
-![](<../.gitbook/assets/4 (2).png>)
+![](<../gitbook-legacy-assets/assets/4 (2).png>)
 
 Une oourbe 'Expo' est disponible en standard, avec une valeur par défaut de 0. Dans ce cas, la réponse est linéaire. Une valeur positive adoucira la réponse autour de 0, tandis qu'une valeur négative accentuera la réponse. L'exemple ci-dessus montre une Expo de 30%. Le résultat s'affiche en temps réèl dans la fenêtre de droite.
 Toute autre courbe préalablement définie dans le menu 'Courbes' peut être sélectionnée. Vous pouvez aussi ajouter une courbe directement. La sortie de mixage sera alors modifiée par cette courbe. 
@@ -61,13 +61,13 @@ Pour supprimer une ligne, appuyer sur la croix dans le symbôle à gauche de la 
 
 Dans l'exemple ci-dessus, trois courses ont été configurées selon l'inter SB.
 
-![](<../.gitbook/assets/5 (4).jpeg>)
+![](<../gitbook-legacy-assets/assets/5 (4).jpeg>)
 
 Dans l'exemple ci-dessus, un appui long sur Entrée fait apparaître une boîte de dialogue pour sélectionner une source au lieu d'une valeur fixe par défaut, dans ce cas Pot1 est sélectionné. Le graphique de droite montre que le potentiomètre est à 65%, ce serait donc le Débattement pour les taux d'ailerons, mais réglable en vol.
 
 **Différentiel**
 
-![](<../.gitbook/assets/6 (2).png>)
+![](<../gitbook-legacy-assets/assets/6 (2).png>)
 
 Le différentiel offre plus de débattement dans une direction. Par exemple, pour les ailerons, on utilise généralement une plus grande course vers le haut que vers le bas pour réduire le lacet inverse et pour améliorer les caractéristiques de virage et de maniabilité. Une valeur positive se traduira par une course vers le bas plus faible des ailerons, comme on peut le voir dans le graphique ci-dessus. (Valeur par défaut = 0. Plage de -100 à +100). Le différentiel de profondeur peut être utilisé pour les avions qui veulent moins de profondeur vers le bas que vers le haut, généralement dans des situations de course. 
 
@@ -81,7 +81,7 @@ Permet de déconnecter le trim associé à un mixage sans le désactiver physiqu
 
 **Nombre voies**
 
-![](<../.gitbook/assets/7 (4).png>)
+![](<../gitbook-legacy-assets/assets/7 (4).png>)
 
 Le nombre de voies définit le nombre de voies de sortie alloués. Dans cet exemple, deux ailerons ont été configurés dans l'assistant de création de modèle.
 
@@ -99,7 +99,7 @@ NB: Le graphique est codé par couleur pour les sorties. Dans l'exemple ci-dessu
 
 Des options supplémentaires sont disponibles : coupure et maintien des gaz. 
 
-![](<../.gitbook/assets/8 (2).jpeg>)
+![](<../gitbook-legacy-assets/assets/8 (2).jpeg>)
 
 **Entrée**
 
@@ -109,13 +109,13 @@ Choix de la source des gaz. Par défaut, il s'agit du manche des gaz mais il peu
 
 Permet de choisir un autre trim que celui de gaz par défaut.
 
-![](<../.gitbook/assets/9 (3).png>)
+![](<../gitbook-legacy-assets/assets/9 (3).png>)
 
 Le X20 Pro/R/RS et le X18 permettent également d'attribuer les versions T5 ou T6.
 
 **Trim Ralenti**
 
-![](<../.gitbook/assets/10 (3).png>)
+![](<../gitbook-legacy-assets/assets/10 (3).png>)
 
 Pour les moteurs thermique, le « trim ralenti » est utilisé pour régler le ralenti moteur. Ce ralenti peut varier en fonction des conditions météorologiques, etc., il est donc important d'avoir un moyen d'ajuster le ralenti sans affecter la position de plein gaz.
 
@@ -123,7 +123,7 @@ Si l'option « Trim ralenti » est activée, la voie des gaz aura une valeur de 
 
 **Coupure gaz**
 
-![](../.gitbook/assets/11.png)
+![](../gitbook-legacy-assets/assets/11.png)
 
 La coupure permet à la voie un verrouillage de sécurité du manche des gaz qui garantit que la voie ne s'active qu'à partir d'une position des gaz au ralenti.
 
@@ -151,7 +151,7 @@ NB : Cette option est importante sur un modèle électrique afin d'éviter le d�
 
 Maintien des gaz sans le verrouillage de sécurité de « Coupure gaz » ci-dessus.
 
-![](<../.gitbook/assets/12 (1).jpeg>)
+![](<../gitbook-legacy-assets/assets/12 (1).jpeg>)
 
 **Condition**
 
@@ -175,16 +175,16 @@ Une courbe peut être définie pour modifier la sortie de la voie des gaz pour p
 
 Avec des mixages complexes, il peut être difficile de voir l'effet d'autres mixages sur une voie particulière. L'option 'Afficher par voie' est particulièrement utile pour mettre au point vos mixages, car tous les mixages qui affectent la voie sélectionnée sont regroupés.
 
-![](<../.gitbook/assets/13 (3).png>)
+![](<../gitbook-legacy-assets/assets/13 (3).png>)
 
 Pour cet exemple, nous allons examiner la voie Profondeur. Nous pouvons voir dans la vue tableau des mixages ci-dessus que l'ascenseur est sur le canal 2, et que plus bas, il y a un mixage Flaps to Elevators également avec le canal 2 en sortie.
 
 \
-![](<../.gitbook/assets/14 (2).png>)
+![](<../gitbook-legacy-assets/assets/14 (2).png>)
 
 Pour voir l'effet de tous les mixages sur la voie de Profondeur, appuyez sur le mixage Profondeurs et sélectionnez « Afficher par voie » dans la boîte de dialogue contextuelle.
 
-![](<../.gitbook/assets/15 (2).png>)(fr)
+![](<../gitbook-legacy-assets/assets/15 (2).png>)(fr)
 
 L'exemple ci-dessus montre qu'il y a deux mixages qui ont un impact sur cette voie : Les profondeurs se mixent eux-mêmes (contrôlés par le manche de profondeur) et un mixage Volets=>Profondeurs qui ajoute
 
@@ -196,26 +196,26 @@ Avec cette disposition 'Vue par voie', la contribution des différents mixages a
 
 **a) Passer d'une voie à l'autre dans « Affichage par voie »**
 
-![](../.gitbook/assets/16.jpeg)
+![](../gitbook-legacy-assets/assets/16.jpeg)
 
 En cliquant sur la ligne récapitulative (mise en surbrillance ci-dessus), les sous-mixages de la chaîne seront montrés.
 
-![](<../.gitbook/assets/17 (1).jpeg>)
+![](<../gitbook-legacy-assets/assets/17 (1).jpeg>)
 
 Comme on peut le voir ci-dessus, les sous-mixages pour les profondeurs CH2 ont été cachés. Vous pouvez maintenant faire défiler vers le haut ou vers le bas et sélectionner un autre canal à développer pour afficher les mixages contribuant à ce canal.
 
 **b) Retour à la « vue Tableau »**
 
-![](<../.gitbook/assets/18 (2).jpeg>)
+![](<../gitbook-legacy-assets/assets/18 (2).jpeg>)
 
 En cliquant sur un sous-mixage à la place, par exemple la ligne mise en évidence ci-dessus, une boîte de dialogue contextuelle s'affichera pour permettre de modifier le mixage, de passer en mode Tableau ou de supprimer le mixage.
 
-![](<../.gitbook/assets/19 (1).jpeg>)
+![](<../gitbook-legacy-assets/assets/19 (1).jpeg>)
 
 Si vous sélectionnez l'affichage Tableau, vous reviendrez à l'affichage normal des mixages au format tableau. Vous pouvez également modifier le mixage en surbrillance ou le supprimer.
 
 \
-![](../.gitbook/assets/20.png)
+![](../gitbook-legacy-assets/assets/20.png)
 
 Nous sommes de retour dans la vue tableau des mixages.
 
@@ -223,7 +223,7 @@ Nous sommes de retour dans la vue tableau des mixages.
 
 **Bibliothèque d'avions**
 
-![](<../.gitbook/assets/0 (4).png>)(fr)
+![](<../gitbook-legacy-assets/assets/0 (4).png>)(fr)
 
 **Mixage libre**
 
@@ -233,20 +233,20 @@ Appuyez sur n'importe quel mixage, puis sélectionnez « Ajouter » dans le menu
 
 Sélectionnez « Mixage libre » dans la liste des mixages prédéfinis disponibles dans la bibliothèque de mixages.
 
-![](<../.gitbook/assets/1 (5).jpeg>)
+![](<../gitbook-legacy-assets/assets/1 (5).jpeg>)
 
 Ensuite, il faut choisir la position du nouveau mixage, dans cet exemple ajoutée après 'Dernière position'.
 
 \
-![](<../.gitbook/assets/2 (1).png>)
+![](<../gitbook-legacy-assets/assets/2 (1).png>)
 
 Appuyez sur « Mixage libre » pour faire apparaître le sous-menu d'édition.
 
-![](<../.gitbook/assets/3 (7).jpeg>)
+![](<../gitbook-legacy-assets/assets/3 (7).jpeg>)
 
 Sélectionnez Modifier pour ouvrir un nouvel écran affichant les paramètres détaillés du « Mixage libre ». L'affichage graphique à droite affichera la sortie de mixage et l'effet de toutes les modifications de réglage apportées.
 
-![](<../.gitbook/assets/4 (3).png>)
+![](<../gitbook-legacy-assets/assets/4 (3).png>)
 
 Nom
 
@@ -301,14 +301,14 @@ La combinaison de ces opérations permet la création d'opérations mathématiqu
 
 Actions
 
-![](<../.gitbook/assets/5 (2).png>)
+![](<../gitbook-legacy-assets/assets/5 (2).png>)
 
 Le mixage libre est extrêmement flexible dans la mesure où il est possible de définir jusqu'à 50 actions de mixage.
 
-![](<../.gitbook/assets/6 (3).png>)\
+![](<../gitbook-legacy-assets/assets/6 (3).png>)\
 Appuyez sur «Ajout action » pour ajouter une action de mixage libre. Remarque : la source a été réglée sur 'Aileron' à des fins d'exemple.
 
-![](<../.gitbook/assets/7 (6).png>)
+![](<../gitbook-legacy-assets/assets/7 (6).png>)
 
 Les actions disponibles sont les suivantes :
 
@@ -324,75 +324,75 @@ L'ordre des actions recommandées est Ralenti, Courbe, Débattement puis Décala
 
 Débattement (course)
 
-![](<../.gitbook/assets/8 (4).png>)
+![](<../gitbook-legacy-assets/assets/8 (4).png>)
 
 Par défaut, le mixage libre commence par une action ‘Course’ de 100% qui est 'Toujours activé'.\
-![](<../.gitbook/assets/9 (5).png>)
+![](<../gitbook-legacy-assets/assets/9 (5).png>)
 
 **Important** : Pour configurer le taux du mixage libre appuyez sur la ligne Course par défaut et sélectionnez ‘Editer' pour apporter des modifications ou des ajouts. Sélectionner 'Ajouter une nouvelle action' ajouterait une deuxième action Course à la place.
 
-![](<../.gitbook/assets/10 (6).png>)
+![](<../gitbook-legacy-assets/assets/10 (6).png>)
 
 Appuyez sur « Ajout course » pour ajouter des débattements supplémentaires. Par exemple, pour créer plusieurs débattements en fonction d'un inter 3 positions.
 
-![](<../.gitbook/assets/11 (1).png>)
+![](<../gitbook-legacy-assets/assets/11 (1).png>)
 
 Dans l'exemple ci-dessus, deux débattements (ou taux) supplémentaires ont été ajoutés à l'aide du commutateur SA.
 
-![](<../.gitbook/assets/12 (4).png>)
+![](<../gitbook-legacy-assets/assets/12 (4).png>)
 
 Lorsque l'interrupteur n'est pas en position centrale ou basse, le poids sera de 100%\
 
 
 Débattements selon le sens
 
-![](<../.gitbook/assets/13 (6).png>)(fr)
+![](<../gitbook-legacy-assets/assets/13 (6).png>)(fr)
 
-![](<../.gitbook/assets/14 (4).png>)(fr)
+![](<../gitbook-legacy-assets/assets/14 (4).png>)(fr)
 
 Dans les conditions actives pour les actions de mélange libre, il y a quatre « directions » de source disponibles, c'est-à-dire haut, bas, droite, gauche.
 
-![](<../.gitbook/assets/15 (4).png>)
+![](<../gitbook-legacy-assets/assets/15 (4).png>)
 
 Pour différents poids vers le haut et vers le bas (pour imiter les précédents 'Poids vers le haut' et 'Poids vers le bas'), les conditions peuvent être définies sur 'Haut' et sur 'Sinon' par défaut.
 
 Courbe
 
-![](<../.gitbook/assets/16 (1).jpeg>)
+![](<../gitbook-legacy-assets/assets/16 (1).jpeg>)
 
 Pour ajouter des courbes au mixage, sélectionnez « Courbe » dans le menu déroulant des actions.
 
-![](<../.gitbook/assets/17 (1).png>)
+![](<../gitbook-legacy-assets/assets/17 (1).png>)
 
 Une option de courbe standard est Expo, qui par défaut a une valeur de 0, ce qui signifie que la réponse est linéaire (c'est-à-dire qu'il n'y a pas de courbe). Une valeur positive adoucira la réponse autour de 0, tandis qu'une valeur négative accentuera la réponse.\
 
 Exemple de « Débattements » d'exponentiels multiples
 
-![](../.gitbook/assets/18.png)
+![](../gitbook-legacy-assets/assets/18.png)
 
 Dans cet exemple, 3 taux d'exponentiels ont été définis pour accompagner les taux de débattements (courses) définis ci-dessus.\
 
 
-![](<../.gitbook/assets/19 (1).png>)
+![](<../gitbook-legacy-assets/assets/19 (1).png>)
 
 Avec le commutateur SA en position médiane, le taux de débattement est de 70 % tandis que l'exponentiel est de 35 %. Avec l'interrupteur SA en position basse, le taux de débattement est de 50 % tandis que l'expo est de 25 %. Avec le commutateur SA en position par défaut (haut), le taux de débattement par défaut est de 100 % tandis que la courbe d'expo par défaut est de 45 %.
 
-![](<../.gitbook/assets/20 (1).png>)
+![](<../gitbook-legacy-assets/assets/20 (1).png>)
 
 N'importe quelle courbe précédemment définie peut également être sélectionnée (nommée CV1 dans l'exemple ci-dessus). La sortie de mixage sera alors modifiée par cette courbe.
 
 Exemple de « Débattements » d'exponentiels multiples
 
-![](<../.gitbook/assets/0 (6).png>)
+![](<../gitbook-legacy-assets/assets/0 (6).png>)
 
 Dans cet exemple, 3 taux d'exponentiels ont été définis pour accompagner les taux de débattements (courses) définis ci-dessus.\
 
 
-![](<../.gitbook/assets/1 (5).png>)
+![](<../gitbook-legacy-assets/assets/1 (5).png>)
 
 Avec le commutateur SA en position médiane, le taux de débattement est de 70 % tandis que l'exponentiel est de 35 %. Avec l'interrupteur SA en position basse, le taux de débattement est de 50 % tandis que l'expo est de 25 %. Avec le commutateur SA en position par défaut (haut), le taux de débattement par défaut est de 100 % tandis que la courbe d'expo par défaut est de 45 %.
 
-![](<../.gitbook/assets/2 (4).png>)
+![](<../gitbook-legacy-assets/assets/2 (4).png>)
 
 N'importe quelle courbe précédemment définie peut également être sélectionnée (nommée CV1 dans l'exemple ci-dessus). La sortie de mixage sera alors modifiée par cette courbe.
 
@@ -402,11 +402,11 @@ Notez que les courbes sont appliquées avant le Débattement.
 
 Différentiel
 
-![](<../.gitbook/assets/3 (10).jpeg>)
+![](<../gitbook-legacy-assets/assets/3 (10).jpeg>)
 
 Pour ajouter un différentiel au mixage, sélectionnez « Différentiel » dans le menu déroulant des actions.
 
-![](<../.gitbook/assets/4 (4).png>)
+![](<../gitbook-legacy-assets/assets/4 (4).png>)
 
 Une valeur positive se traduira par une sortie de mixage ayant moins de course vers le bas. (Valeur par défaut = 0. Plage de -100 à +100). With a value of 50% downward travel is half of the upward travel, as can be seen in the example above.
 
@@ -414,11 +414,11 @@ Veuillez-vous référer à la description du mixage Ailerons pour plus de détai
 
 Décalage
 
-![](<../.gitbook/assets/5 (8).jpeg>)
+![](<../gitbook-legacy-assets/assets/5 (8).jpeg>)
 
 Pour ajouter un décalage au mixage, sélectionnez « Décalage » dans le menu déroulant des actions.
 
-![](<../.gitbook/assets/6 (5).png>)
+![](<../gitbook-legacy-assets/assets/6 (5).png>)
 
 Un décalage décalera la sortie de mixage vers le haut ou vers le bas de la valeur de décalage saisie ici. Les valeurs négatives sont autorisées.
 
@@ -426,26 +426,26 @@ Deux valeurs de décalage peuvent être définies, l'une lorsque le mixage libre
 
 Ajout d'un trim à un mixage libre
 
-![](<../.gitbook/assets/7 (7).png>)
+![](<../gitbook-legacy-assets/assets/7 (7).png>)
 
 \
-![](<../.gitbook/assets/8 (6).png>)
+![](<../gitbook-legacy-assets/assets/8 (6).png>)
 
 Dans l'exemple ci-dessus, le trim de gaz a été sélectionné comme source pour ajuster le décalage.
 
 \
-![](<../.gitbook/assets/9 (6).png>)\
+![](<../gitbook-legacy-assets/assets/9 (6).png>)\
 
 
 Par défaut, les versions ont une plage de +/- 25 %. Lorsqu'il est utilisé comme source, les trims peuvent éventuellement être modifiés en plage complète +/- 100 % (appuyez longuement sur Entrée sur le trim).
 
 Ralenti
 
-![](<../.gitbook/assets/10 (2).jpeg>)
+![](<../gitbook-legacy-assets/assets/10 (2).jpeg>)
 
 Pour ajouter un ralentissement à la sortie du mixage libre, sélectionnez « Ralenti » dans le menu déroulant des actions.
 
-![](<../.gitbook/assets/11 (8).jpeg>)
+![](<../gitbook-legacy-assets/assets/11 (8).jpeg>)
 
 La réponse de la sortie peut être ralentie en ce qui concerne le changement d'entrée. Slow pourrait par exemple être utilisé pour ralentir les rentrées qui sont actionnées par un servo proportionnel normal. La valeur est le temps en secondes qu'il faudra à la sortie pour couvrir la plage de -100 à +100 %.
 
@@ -543,7 +543,7 @@ Le mixage Décalage permet d'ajouter une valeur fixe au mixage lorsqu'un décala
 
 **Bibliothèque de planeurs**
 
-![](<../.gitbook/assets/12 (6).png>)
+![](<../gitbook-legacy-assets/assets/12 (6).png>)
 
 _**Mixage**_ libre
 
@@ -620,7 +620,7 @@ Le mixage Décalage permet d'ajouter une valeur fixe au mixage lorsqu'un décala
 
 **Bibliothèque Heli**
 
-![](<../.gitbook/assets/13 (8).png>)
+![](<../gitbook-legacy-assets/assets/13 (8).png>)
 
 _**Mixage libre**_
 
@@ -660,7 +660,7 @@ Le mixage Décalage permet d'ajouter une valeur fixe au mixage lorsqu'un décala
 
 **Bibliothèque multirotor**
 
-![](<../.gitbook/assets/14 (6).png>)
+![](<../gitbook-legacy-assets/assets/14 (6).png>)
 
 _**Mixage libre**_
 

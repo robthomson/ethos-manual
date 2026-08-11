@@ -1,21 +1,21 @@
 # Configuration de l'écran principal
 
-![](../.gitbook/assets/????????.jpeg)
+![](../gitbook-legacy-assets/assets/????????.jpeg)
 
 Par défaut, le premier écran comporte un grand widget sur la gauche pour afficher le bitmap du modèle, et trois widgets sur la droite pour afficher les huit chronos. Ces widgets peuvent être reconfigurés pour afficher d'autres paramètres, ou l'ensemble de la disposition de l'écran peut être remplacé par un écran nouvellement défini avec un nombre différent de cellules ou une disposition des cellules.
 
 Chaque widget affiche le type de widget en haut à gauche. Pour les widgets configurables, la source est affichée en bas à gauche du widget. Le widget peut être configuré en appuyant sur le bouton 'Configurer'.
 
-![](../.gitbook/assets/????????.jpeg)
+![](../gitbook-legacy-assets/assets/????????.jpeg)
 
 La source du widget peut être modifiée en appuyant sur la flèche vers le bas.
 
-![](../.gitbook/assets/????????.jpeg)
+![](../gitbook-legacy-assets/assets/????????.jpeg)
 
 Le widget peut être configuré en appuyant sur le bouton « Configurer le widget ».
 Dans l'exemple ci-dessus, le widget est de type 'Value', avec la source définie sur 'Timer1'. Le titre du widget est activé.
 
-![](../.gitbook/assets/????????.jpeg)
+![](../gitbook-legacy-assets/assets/????????.jpeg)
 
 Si un widget n'est pas configurable, ou n'est pas encore attribué, seul un bouton 'Modifier le widget' s'affiche. Appuyez sur le bouton « Modifier le widget » pour afficher une boîte de dialogue de catégorie de widget. Les widgets Lua personnalisés apparaîtront également dans la liste. 
 
@@ -24,37 +24,37 @@ Si un widget n'est pas configurable, ou n'est pas encore attribué, seul un bout
 **Bitmap**
 Permet d'afficher un bitmap sélectionné.
 
-![](../.gitbook/assets/????????.jpeg)
+![](../gitbook-legacy-assets/assets/????????.jpeg)
 
 Dans l'exemple ci-dessus, le widget affichera le bitmap du modèle, qui doit se trouver dans /bitmaps/model.
 
-![](../.gitbook/assets/????????.jpeg)
+![](../gitbook-legacy-assets/assets/????????.jpeg)
 
 Le widget peut également afficher un bitmap utilisateur, qui doit se trouver dans /bitmaps/user.
 
 **Valeur**
 
-![](../.gitbook/assets/????????.jpeg)
+![](../gitbook-legacy-assets/assets/????????.jpeg)
 
-![](../.gitbook/assets/????????.jpeg)
+![](../gitbook-legacy-assets/assets/????????.jpeg)
 
 Le widget Valeur affiche simplement la valeur de la source sélectionnée.
 
 **Valeur min/max**
 
-![](../.gitbook/assets/????????.jpeg)
+![](../gitbook-legacy-assets/assets/????????.jpeg)
 
 Lors de l'affichage des valeurs de télémétrie, un appui long sur le capteur après la sélection vous permet d'afficher la valeur min ou max.
 
 **Journaux de chrono**
 
-![](../.gitbook/assets/????????.jpeg)
+![](../gitbook-legacy-assets/assets/????????.jpeg)
 
-![](../.gitbook/assets/????????.jpeg)
+![](../gitbook-legacy-assets/assets/????????.jpeg)
 
 Les journaux de chrono fournissent un journal des valeurs de chrono. Les valeurs de le chrono sont écrites lorsque le chrono est réinitialisée.
 
-![](../.gitbook/assets/????????.jpeg)
+![](../gitbook-legacy-assets/assets/????????.jpeg)
 
 **Carte GPS**
 
@@ -62,33 +62,33 @@ Ce widget prend en charge l'affichage d'une carte GPS. Veuillez-vous référer a
 
 **LiPo**
 
-![](../.gitbook/assets/????????.jpeg)
+![](../gitbook-legacy-assets/assets/????????.jpeg)
 
 Le widget Lipo affichera les informations de tension Lipo provenant de capteurs tels que FLVSS.
 
-![](../.gitbook/assets/????????.jpeg)
+![](../gitbook-legacy-assets/assets/????????.jpeg)
 
 Si la tension de cellule la plus basse est inférieure au seuil « Basse tension », les tensions sont affichées en rouge.
 
 **Voies**
 
-![](../.gitbook/assets/????????.jpeg)
+![](../gitbook-legacy-assets/assets/????????.jpeg)
 
 Le widget Voies permet d'afficher jusqu'à 8 voies sous forme de graphique à barres, avec des barres horizontales ou verticales.
 
-![](../.gitbook/assets/????????.jpeg)
+![](../gitbook-legacy-assets/assets/????????.jpeg)
 
 L'exemple ci-dessus montre deux widgets Voies, celui de gauche affichant 4 voies verticalement, tandis que celui de droite affiche 8 voies horizontalement.
 
 **Tracé ligne**
 ***Configuration***
 
-![](../.gitbook/assets/????????.jpeg)
+![](../gitbook-legacy-assets/assets/????????.jpeg)
 
 Le widget Graphique linéaire permet de représenter graphiquement la source sélectionnée.
 Notez que le widget réinitialise ses données lors d'une « réinitialisation de vol ».
 
-![](../.gitbook/assets/????????.jpeg)
+![](../gitbook-legacy-assets/assets/????????.jpeg)
 
 ***Source***
 Sélectionnez la source à cartographier.
@@ -110,7 +110,7 @@ Dans l'exemple ci-dessus, la plage automatique du widget inférieur est désacti
 
 **Options d'exécution**
  
-![](../.gitbook/assets/????????.jpeg)
+![](../gitbook-legacy-assets/assets/????????.jpeg)
 
 Appuyez sur le graphique en courbes pendant qu'il est en cours d'exécution pour afficher une boîte de dialogue qui vous permet de :
 •	Suspendre ou reprendre la journalisation
@@ -125,11 +125,11 @@ Le widget de texte affichera le contenu d'un fichier texte. Le format Markdown e
 
 Le fichier texte doit être placé dans un dossier nommé documents/user.
  
-![](../.gitbook/assets/????????.jpeg)
+![](../gitbook-legacy-assets/assets/????????.jpeg)
  
 Utilisez le Gestionnaire système/fichier pour accéder au fichier, puis cliquez dessus. Une boîte de dialogue s'ouvrira avec une option permettant d'ouvrir le fichier.
  
-![](../.gitbook/assets/????????.jpeg)
+![](../gitbook-legacy-assets/assets/????????.jpeg)
  
 Le contenu du fichier s'affiche.  Le format Markdown est pris en charge.
 

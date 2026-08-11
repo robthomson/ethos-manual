@@ -1,6 +1,6 @@
 # Sorties
 
-![](<../.gitbook/assets/0 (6).jpeg>)
+![](<../gitbook-legacy-assets/assets/0 (6).jpeg>)
 
 La section Sorties est l’interface entre la configuration "logique" et la réalité avec les servos, le contrôle des gouvernes aussi bien qu’avec les manches et les trims. Dans les mixages, nous avons mis en place ce que nous voulons que nos différents contrôles fassent. Cette section permet d'adapter ces sorties logiques pures aux caractéristiques mécaniques du modèle. C'est là que nous configurons les portées minimales et maximales, l'inversion du servo ou voies, et ajustons le neutre du servo ou de la voie à l'aide du réglage du subtrim, ou ajoutons un décalage à l'aide du subtrim. Nous pouvons également définir une courbe pour corriger les problèmes de réponse du monde réel. Par exemple, une courbe peut être utilisée pour s'assurer que les volets gauche et droit suivent avec précision. Les différentes voies sont des sorties, par exemple CH1 correspond à la prise servo #1 sur votre récepteur (avec les paramètres de protocole par défaut).
 
@@ -13,7 +13,7 @@ Bien que la radio soit configurée en utilisant des pourcentages comme entrée, 
 | 100%   | = | 2012 μs |
 | 150%   | = | 2268 μs |
 
-![](<../.gitbook/assets/1 (7).jpeg>)
+![](<../gitbook-legacy-assets/assets/1 (7).jpeg>)
 
 L'écran Sorties affiche deux graphiques à barres pour chaque voie. La barre inférieure (verte) indique la valeur des mixages pour le canal, tandis que la barre supérieure (orange) indique la valeur réelle (en % et en μS) de la sortie après le traitement des sorties, qui est ce qui est envoyé au récepteur. Dans l'exemple ci-dessus, vous pouvez voir que les valeurs de mixage et de sortie pour CH4 Gaz sont à 100%.
 
@@ -26,7 +26,7 @@ Remarque : Pour un accès rapide à cet écran de moniteur, un appui long sur la
 Appuyez sur la voie à modifier.
 
 \
-![](<../.gitbook/assets/2 (3).png>)
+![](<../gitbook-legacy-assets/assets/2 (3).png>)
 
 **Aperçu**
 
@@ -54,7 +54,7 @@ Lors de l'utilisation d'un système de redondance impliquant SBUS, les mouvement
 
 Remarque : Les paramètres Min/Max ont des plages de (-150 % à 0 %) et (0 % à +150 %) respectivement. Lorsque vous utilisez des VAR comme source pour ajuster les paramètres Min/Max, à moins que la Var n'ait une plage identique, il sera nécessaire de définir la plage Var à ignorer pour éviter les valeurs inattendues dues à la conversion de plage. Veuillez vous référer à la section Options Var pour plus de détails sur cette option.
 
-![](<../.gitbook/assets/3 (2).png>)
+![](<../gitbook-legacy-assets/assets/3 (2).png>)
 
 En cas d'utilisation de plus de 125 % sur le récepteur principal pilotant les sorties PWM, et que ce récepteur entre en sécurité intégrée, les positions d'asservissement alors reçues d'un récepteur redondant via SBUS sont limitées à 125 %.
 
@@ -62,7 +62,7 @@ En particulier, si une sortie sur le récepteur principal est supérieure à 125
 
 **Aide à l'installation**
 
-![](<../.gitbook/assets/4 (8).jpeg>)
+![](<../gitbook-legacy-assets/assets/4 (8).jpeg>)
 
 Lors du réglage des limites de sortie min/max, la fin à ajuster est mise en surbrillance en gras.
 
@@ -96,16 +96,16 @@ Veuillez noter qu'une fonction de retard est disponible sous les interrupteurs l
 
 **Echanger voies**
 
-![](<../.gitbook/assets/5 (4).png>)
+![](<../gitbook-legacy-assets/assets/5 (4).png>)
 
 Cette fonction permet d’inverser deux canaux de sortie.
 
-![](<../.gitbook/assets/6 (4).png>)
+![](<../gitbook-legacy-assets/assets/6 (4).png>)
 
 La boîte de dialogue d'échange s'ouvre avec le premier canal déjà rempli. Sélectionnez le canal à permuter, puis cliquez sur OK. Notez que l'échange a lieu immédiatement
 
 **Réinitialiser les paramètres**
 
-![](<../.gitbook/assets/7 (4).jpeg>)\
+![](<../gitbook-legacy-assets/assets/7 (4).jpeg>)\
 La réinitialisation des paramètres effacera tous les paramètres du canal de sortie si le canal n'est plus nécessaire. Une boîte de dialogue de confirmation permet d'éviter toute réinitialisation accidentelle.\
 Cela évitera que les paramètres ne soient pas à leurs valeurs par défaut si le canal est réutilisé pour autre chose.
