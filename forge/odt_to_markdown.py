@@ -49,7 +49,7 @@ import sys
 import zipfile
 import xml.etree.ElementTree as ET
 
-from PIL import Image
+from PIL import Image, UnidentifiedImageError
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
@@ -599,10 +599,22 @@ def convert(odt_path, output_dir, split_chapters=False, summary=False):
         assets_root = os.path.join(output_dir, ASSETS_DIR_NAME)
         extracted = 0
         converted = 0
+        # Images PIL can't decode at all — a LibreOffice-embedded WMF/EMF
+        # vector graphic mistakenly living under Pictures/ alongside real
+        # raster images has been seen in practice (not a malformed .odt,
+        # just a format save_as_png() was never meant to handle). One
+        # undecodable image shouldn't abort a conversion that's otherwise
+        # fine — skipped and reported here, same spirit as `missing` below
+        # for a linked image that can't be found on disk at all.
+        undecodable = []
         for info in archive.infolist():
             if info.filename.startswith("Pictures/") and not info.is_dir():
                 dest_name = as_png_name(info.filename)
-                save_as_png(archive.read(info.filename), os.path.join(assets_root, dest_name))
+                try:
+                    save_as_png(archive.read(info.filename), os.path.join(assets_root, dest_name))
+                except (UnidentifiedImageError, OSError):
+                    undecodable.append(info.filename)
+                    continue
                 extracted += 1
                 if dest_name != info.filename:
                     converted += 1
@@ -612,7 +624,11 @@ def convert(odt_path, output_dir, split_chapters=False, summary=False):
         if source is None:
             missing.append(out_basename)
             continue
-        save_as_png(source, os.path.join(assets_root, out_basename))
+        try:
+            save_as_png(source, os.path.join(assets_root, out_basename))
+        except (UnidentifiedImageError, OSError):
+            undecodable.append(out_basename)
+            continue
         if not source.lower().endswith(".png"):
             converted += 1
 
@@ -640,6 +656,12 @@ def convert(odt_path, output_dir, split_chapters=False, summary=False):
               f"and are referenced but missing from {assets_root}:")
         for basename in missing:
             print(f"  - {basename}")
+    if undecodable:
+        print(f"WARNING: {len(undecodable)} image(s) could not be decoded (not a format "
+              f"Pillow understands — e.g. an embedded WMF/EMF vector graphic) and are "
+              f"referenced in the Markdown but missing from {assets_root}:")
+        for name in undecodable:
+            print(f"  - {name}")
     if unresolved:
         print(f"WARNING: {len(unresolved)} internal cross-reference link(s) point at a bookmark "
               f"that was never found, left as a dead #anchor:")
