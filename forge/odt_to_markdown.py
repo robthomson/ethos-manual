@@ -75,6 +75,11 @@ ASSETS_PLACEHOLDER = "\x00ASSETS\x00"
 LINK_OPEN, LINK_SEP, LINK_CLOSE = "\x00LINK\x00", "\x00SEP\x00", "\x00ENDLINK\x00"
 LINK_RE = re.compile(re.escape(LINK_OPEN) + r"(.*?)" + re.escape(LINK_SEP) + r"(.*?)" + re.escape(LINK_CLOSE), re.S)
 
+# Matches a rendered "![alt](path)" image -- used to tell a heading with
+# real title text apart from one that renders non-empty only because it
+# contains an image and no text (see walk()'s "h" case).
+IMAGE_MD_RE = re.compile(r"!\[[^\]]*\]\([^)]*\)")
+
 
 def q(prefix, name):
     """Builds a fully-qualified ElementTree tag/attribute name, e.g.
@@ -358,8 +363,19 @@ class Converter:
             if tag == "h":
                 level = min(int(child.get(q("text", "outline-level"), "1")), 6)
                 text = self.render_inline(child)
-                if text.strip():
+                if IMAGE_MD_RE.sub("", text).strip():
                     yield self.emit(f"{'#' * level} {text}")
+                elif text.strip():
+                    # A heading-styled paragraph whose only content is an
+                    # image (no real title text) isn't a real chapter/
+                    # section boundary -- some source documents apply a
+                    # heading paragraph style to a standalone diagram
+                    # image (seen e.g. in the Spanish manual's radio
+                    # layout chapters), which would otherwise get
+                    # promoted to its own bogus chapter by
+                    # --split-chapters. Keep the image as normal body
+                    # content instead of dropping it.
+                    yield self.emit(text)
             elif tag == "p":
                 text = self.render_inline(child)
                 if text.strip():
