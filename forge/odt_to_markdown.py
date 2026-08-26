@@ -180,7 +180,7 @@ def wrap_style(text, bold, italic):
 
 
 class Converter:
-    def __init__(self, text_styles, list_styles, odt_dir):
+    def __init__(self, text_styles, list_styles, odt_dir, toc_fallback_headings=None):
         self.text_styles = text_styles
         self.list_styles = list_styles
         self.odt_dir = odt_dir
@@ -197,6 +197,17 @@ class Converter:
         # figure out which output file each bookmark ends up in.
         self._pending_bookmarks = []
         self.blocks_bookmarks = []
+        # element (by identity) -> outline level, for the *specific* body
+        # "p" elements resolve_toc_fallback_headings() has already decided
+        # are real chapter/section titles lacking a real heading style --
+        # see that function for the full resolution logic. Precomputed
+        # once, over the whole document, before walk() runs (not decided
+        # incrementally as walk() encounters each paragraph): disambiguating
+        # one candidate occurrence from another needs each candidate's
+        # position relative to *all* the others, which walk()'s own
+        # one-paragraph-at-a-time traversal doesn't have visibility into.
+        self._toc_fallback_headings = toc_fallback_headings or {}
+        self.toc_fallback_matches = 0
 
     def register_bookmark(self, name):
         self._pending_bookmarks.append(name)
@@ -379,7 +390,12 @@ class Converter:
             elif tag == "p":
                 text = self.render_inline(child)
                 if text.strip():
-                    yield self.emit(text)
+                    fallback_level = self._toc_fallback_headings.get(child)
+                    if fallback_level is not None:
+                        self.toc_fallback_matches += 1
+                        yield self.emit(f"{'#' * fallback_level} {text}")
+                    else:
+                        yield self.emit(text)
             elif tag == "list":
                 block = self.render_list(child)
                 if block:
@@ -416,6 +432,175 @@ def slugify(heading_block):
     text = re.sub(r"[*_`\[\]]", "", text).replace("\\", "")
     text = re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
     return text or "chapter"
+
+
+TOC_PAGENUM_RE = re.compile(r"(\d+)$")
+
+
+def extract_toc_entries(body):
+    """(level, slug) pairs from the document's own table-of-content, in
+    document order -- a fallback source of real chapter/section titles
+    for a document whose body doesn't mark them as real <text:h>
+    headings at all. Confirmed necessary on the Italian manual: every
+    chapter title there uses a plain custom paragraph style instead of a
+    real Heading style, so walk()'s normal "h" handling never sees them
+    -- but the word processor's auto-generated table of contents, built
+    from whatever WAS a real heading at some point the document was
+    edited, still has the authentic title list and levels. Consumed by
+    resolve_toc_fallback_headings(), which is where the *disambiguation*
+    this docstring would otherwise need to explain actually happens --
+    see that function.
+
+    slugify() (not raw text) is the title comparison key so matching is
+    insensitive to accents/punctuation/case drift between how the same
+    title happens to render in the TOC vs. the body paragraph -- already
+    the established "compare two headings loosely" tool in this module.
+    TOC_PAGENUM_RE strips the trailing page-number digits the ODF
+    page-number field flattens into plain text with no separator (e.g.
+    "Sticks84" for a heading on page 84) -- not otherwise used; an
+    earlier version of this fallback tried to use those page numbers
+    directly, but text:soft-page-break markers (the only page-position
+    signal available elsewhere in the document to compare them against)
+    turned out not to reliably correspond to real pages on this
+    document, undercounting by a growing margin further into the body.
+    See resolve_toc_fallback_headings for the position-based approach
+    that replaced it.
+
+    Returns [] for a document with no table-of-content at all (nothing
+    to fall back to -- a real gap, not an error) or one whose real body
+    already has real <text:h> chapter headings (see this module's own
+    walk() docstring/comments): those never reach the fallback matcher
+    in the first place; extracting entries that then simply never match
+    is harmless but pointless."""
+    toc = body.find(q("text", "table-of-content"))
+    if toc is None:
+        return []
+    index_body = toc.find(q("text", "index-body"))
+    if index_body is None:
+        return []
+    entries = []
+    for child in index_body:
+        if localname(child.tag) != "h":
+            continue
+        level = min(int(child.get(q("text", "outline-level"), "1")), 6)
+        raw_text = "".join(child.itertext())
+        title = TOC_PAGENUM_RE.sub("", raw_text).strip()
+        slug = slugify(title)
+        if slug != "chapter":  # slugify()'s own empty-input fallback value
+            entries.append((level, slug))
+    return entries
+
+
+def collect_body_paragraphs(body):
+    """Every top-level "p" in the real body (outside the table-of-
+    content), in document order, as (element, slug) pairs -- the flat
+    candidate sequence resolve_toc_fallback_headings() matches TOC
+    entries against."""
+    toc = body.find(q("text", "table-of-content"))
+    out = []
+
+    def walk_collect(el):
+        for child in el:
+            if child is toc:
+                continue
+            if localname(child.tag) == "p":
+                slug = slugify("".join(child.itertext()))
+                if slug != "chapter":
+                    out.append((child, slug))
+            walk_collect(child)
+
+    walk_collect(body)
+    return out
+
+
+def resolve_toc_fallback_headings(body):
+    """element (by identity) -> outline level, for the specific body "p"
+    elements that are, with high confidence, a real chapter/section
+    title lacking a real heading style -- see extract_toc_entries for
+    where the (level, slug) candidate list comes from.
+
+    Two-tier position-based matching, replacing two earlier, less
+    reliable approaches (see git history / this function's own commit
+    for the full story): plain sequential "first same-titled paragraph
+    found" matching was wrong whenever an unrelated, coincidentally
+    same-worded mention preceded the real heading (confirmed on this
+    manual: a generic one-word title like "Stick" turned out to also be
+    an ordinary in-body mention used several times, nowhere near the
+    real "Sticks" chapter); requiring global text uniqueness was safe
+    but far too conservative (it also excluded titles that legitimately
+    repeat once as part of a chapter's own "Overview" page previewing
+    its own sub-section names -- something this document does
+    throughout, before each real heading proper); and a page-number-
+    based approach (comparing each candidate's own computed page,
+    counted from text:soft-page-break markers, against the TOC entry's
+    declared page) turned out not to work either -- soft-page-break
+    markers don't reliably correspond to real pages on this document.
+
+    What does work: level-1 (chapter) titles are reliably *globally*
+    unique (confirmed empirically -- a real manual doesn't reuse a whole
+    chapter's own name as a stray in-body mention the way a generic
+    single word can get reused), so those are trusted outright as
+    anchors. Every other TOC entry is then resolved by plain sequential
+    "first occurrence after the current position" matching same as the
+    original approach -- but *bounded* to only search within its own
+    chapter's span (the body positions between that chapter's own
+    anchor and the next chapter anchor), never beyond it. This is
+    exactly the constraint that was missing before: it can never pick
+    an unrelated same-worded mention from a completely different,
+    distant chapter (out of window by construction), while still
+    correctly finding a title that legitimately repeats once nearby (a
+    chapter's own "Overview" preview mention, then the real heading a
+    few paragraphs later, both well inside the same chapter's span) by
+    simply preferring whichever occurrence comes first after the
+    current in-window cursor -- same as picking the "Overview" mention
+    itself would, since previewed sub-section names always appear
+    *before* their own real heading in a coherent document, never after.
+
+    An entry with no candidate at all in its chapter's window is left
+    unresolved (that title stays as ordinary body text, folded into
+    whatever's around it) rather than guessed at."""
+    toc_entries = extract_toc_entries(body)
+    if not toc_entries:
+        return {}
+
+    sequence = collect_body_paragraphs(body)
+    positions_by_slug: dict = {}
+    for idx, (_element, slug) in enumerate(sequence):
+        positions_by_slug.setdefault(slug, []).append(idx)
+
+    # (toc_entry_index, sequence_index) for every level-1 entry that's
+    # globally unique in the body and comes strictly after the previous
+    # anchor's own position -- an out-of-order or non-unique "chapter"
+    # title (neither seen in practice, but not provably impossible) is
+    # simply not trusted as an anchor rather than corrupting the window
+    # construction below.
+    anchor_positions = []
+    last_seq_pos = -1
+    for i, (level, slug) in enumerate(toc_entries):
+        if level != 1:
+            continue
+        candidates = positions_by_slug.get(slug, [])
+        if len(candidates) == 1 and candidates[0] > last_seq_pos:
+            anchor_positions.append((i, candidates[0]))
+            last_seq_pos = candidates[0]
+
+    resolved: dict = {}
+    for a, (entry_start, seq_start) in enumerate(anchor_positions):
+        entry_end = anchor_positions[a + 1][0] if a + 1 < len(anchor_positions) else len(toc_entries)
+        seq_end = anchor_positions[a + 1][1] if a + 1 < len(anchor_positions) else len(sequence)
+
+        resolved[sequence[seq_start][0]] = toc_entries[entry_start][0]
+
+        cursor = seq_start + 1
+        for i in range(entry_start + 1, entry_end):
+            level, slug = toc_entries[i]
+            for pos in positions_by_slug.get(slug, []):
+                if cursor <= pos < seq_end:
+                    resolved[sequence[pos][0]] = level
+                    cursor = pos + 1
+                    break
+
+    return resolved
 
 
 def unique_slug(base, used):
@@ -520,13 +705,26 @@ def convert(odt_path, output_dir, split_chapters=False, summary=False):
         if body is None:
             raise RuntimeError("content.xml has no office:body/office:text")
 
-        converter = Converter(text_styles, list_styles, odt_dir)
+        toc_fallback_headings = resolve_toc_fallback_headings(body)
+        converter = Converter(text_styles, list_styles, odt_dir, toc_fallback_headings=toc_fallback_headings)
         # Strip each block: a stray leading tab/space (e.g. layout spacing
         # before an inline image) would otherwise read as a Markdown code
         # block and break rendering. walk() only ever yields non-empty
         # blocks, so this list stays index-aligned with converter.blocks_bookmarks.
         blocks = [b.strip() for b in converter.walk(body)]
         items = list(zip(blocks, converter.blocks_bookmarks))
+
+        if toc_fallback_headings:
+            total_entries = len(extract_toc_entries(body))
+            unmatched = total_entries - converter.toc_fallback_matches
+            print(f"Matched {converter.toc_fallback_matches}/{total_entries} table-of-content "
+                  f"entries against body paragraphs lacking a real heading style (promoted to "
+                  f"real headings by chapter-bounded position match).")
+            if unmatched:
+                print(f"NOTE: {unmatched} table-of-content entries had no body paragraph within "
+                      f"their own chapter's span to trust -- those titles are left as ordinary "
+                      f"body text (folded into whichever chapter/section is open at that point) "
+                      f"rather than guessed at.")
 
         os.makedirs(output_dir, exist_ok=True)
         base_name = os.path.splitext(os.path.basename(odt_path))[0]
